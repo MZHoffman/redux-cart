@@ -1,7 +1,14 @@
-import classes from './CartItem.module.css';
+import classes from './CartItem.module.css'
 
 const CartItem = (props) => {
-  const { title, quantity, total, price } = props.item;
+  const { title, quantity, total, price } = props.item
+
+  const addHandler = () => {
+    console.log({ title, price })
+  }
+  const removeHandler = () => {
+    console.log({ title, price })
+  }
 
   return (
     <li className={classes.item}>
@@ -17,12 +24,12 @@ const CartItem = (props) => {
           x <span>{quantity}</span>
         </div>
         <div className={classes.actions}>
-          <button>-</button>
-          <button>+</button>
+          <button onClick={addHandler}>-</button>
+          <button onClick={removeHandler}>+</button>
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem

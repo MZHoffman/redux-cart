@@ -11,9 +11,27 @@ const cartSlice = createSlice({
     },
   },
 })
+
+const cartItemsSlice = createSlice({
+  name: 'cartItems',
+  initialState: {
+    items: [],
+    numberOfItems: 0,
+    totalPrice: 0,
+  },
+  reducers: {
+    addItem(state, action) {
+      console.log(action)
+    },
+    removeItem(state, action) {
+      console.log(action)
+    },
+  },
+})
 const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
+    cartItem: cartItemsSlice.reducer,
   },
 })
 export const cartActions = cartSlice.actions

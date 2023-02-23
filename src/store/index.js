@@ -21,10 +21,13 @@ const cartItemsSlice = createSlice({
   },
   reducers: {
     addItem(state, action) {
-      console.log(action)
+      state.items.push(action.payload)
+    },
+    incrementIteam(state, action) {
+      console.log(action.payload)
     },
     removeItem(state, action) {
-      console.log(action)
+      console.log(action.payload)
     },
   },
 })
@@ -35,5 +38,6 @@ const store = configureStore({
   },
 })
 export const cartActions = cartSlice.actions
+export const cartItemsActions = cartItemsSlice.actions
 
 export default store

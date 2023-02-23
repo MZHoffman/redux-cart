@@ -23,11 +23,18 @@ const cartItemsSlice = createSlice({
     addItem(state, action) {
       state.items.push(action.payload)
     },
-    incrementIteam(state, action) {
-      console.log(action.payload)
+    incrementItem(state, action) {
+      state.items[action.payload].quantity++
+      const test = state.items[action.payload].quantity
+      console.log(test)
     },
     removeItem(state, action) {
-      console.log(action.payload)
+      state.items.splice(action.payload, 1)
+    },
+    decrementItem(state, action) {
+      state.items[action.payload].quantity--
+      const test = state.items[action.payload].quantity
+      console.log(test)
     },
   },
 })

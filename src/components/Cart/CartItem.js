@@ -10,19 +10,32 @@ const CartItem = (props) => {
 
   const { title, quantity, total, price } = props.item
 
+  const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
-    const indexOfIteam = cartItems.items.findIndex(
-      (item) => item.title === title
-    )
-    if (indexOfIteam <= 0) {
-      console.log(cartItems.items[indexOfIteam].quantity + 1)
+    // console.log(indexOfIteam >= 0)
+    if (indexOfIteam >= 0) {
+      // console.log(cartItems.items[indexOfIteam].quantity + 1)
+      // console.log(cartItems.items)
+      console.log(cartItems)
+      dispatch(cartItemsActions.incrementItem(indexOfIteam))
+      return
     }
-
     dispatch(cartItemsActions.addItem(props.item))
-    console.log(cartItems.items)
   }
   const removeHandler = () => {
-    console.log({ title, price })
+    //console.log(cartItems.items[indexOfIteam].quantity)
+    if (cartItems.items[indexOfIteam].quantity <= 1) {
+      dispatch(cartItemsActions.removeItem(indexOfIteam))
+      return
+    }
+
+    if (indexOfIteam >= 0) {
+      // console.log(cartItems.items[indexOfIteam].quantity + 1)
+      // console.log(cartItems.items)
+      console.log(cartItems)
+      dispatch(cartItemsActions.decrementItem(indexOfIteam))
+      return
+    }
   }
 
   return (

@@ -16,8 +16,6 @@ const cartItemsSlice = createSlice({
   name: 'cartItems',
   initialState: {
     items: [],
-    numberOfItems: 0,
-    totalPrice: 0,
   },
   reducers: {
     addItem(state, action) {
@@ -25,16 +23,12 @@ const cartItemsSlice = createSlice({
     },
     incrementItem(state, action) {
       state.items[action.payload].quantity++
-      const test = state.items[action.payload].quantity
-      console.log(test)
     },
     removeItem(state, action) {
       state.items.splice(action.payload, 1)
     },
     decrementItem(state, action) {
       state.items[action.payload].quantity--
-      const test = state.items[action.payload].quantity
-      console.log(test)
     },
   },
 })

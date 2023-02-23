@@ -5,7 +5,6 @@ import { cartActions } from '../../store'
 const CartButton = (props) => {
   const dispatch = useDispatch()
   const numberOfItems = useSelector((state) => state.cartItem.items.length)
-  console.log(numberOfItems)
 
   const cartToggleHandler = () => {
     dispatch(cartActions.toggleCart())

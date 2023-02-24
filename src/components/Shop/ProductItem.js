@@ -16,7 +16,7 @@ const ProductItem = (props) => {
       dispatch(cartItemsActions.incrementItem(indexOfIteam))
       return
     }
-    dispatch(cartItemsActions.addItem({ title, price, quantity: 1, total: 18 }))
+    dispatch(cartItemsActions.addItem({ title, price, quantity: 1 }))
   }
 
   return (

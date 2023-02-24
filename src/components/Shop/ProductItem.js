@@ -12,10 +12,10 @@ const ProductItem = (props) => {
 
   const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
-    if (indexOfIteam >= 0) {
-      dispatch(cartActions.incrementItem(indexOfIteam))
-      return
-    }
+    // if (indexOfIteam >= 0) {
+    //   dispatch(cartActions.incrementItem(indexOfIteam))
+    //   return
+    // }
     dispatch(cartActions.addItem({ id, title, price, quantity: 1 }))
   }
 

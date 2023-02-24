@@ -8,7 +8,7 @@ const ProductItem = (props) => {
   const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart)
 
-  const { title, price, description } = props
+  const { id, title, price, description } = props
 
   const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
@@ -16,7 +16,7 @@ const ProductItem = (props) => {
       dispatch(cartActions.incrementItem(indexOfIteam))
       return
     }
-    dispatch(cartActions.addItem({ title, price, quantity: 1 }))
+    dispatch(cartActions.addItem({ id, title, price, quantity: 1 }))
   }
 
   return (

@@ -1,22 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { cartItemsActions } from '../../store'
+import { cartActions } from '../../store/cart-slice'
 
 import Card from '../UI/Card'
 import classes from './ProductItem.module.css'
 
 const ProductItem = (props) => {
   const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.cartItem)
+  const cartItems = useSelector((state) => state.cart)
 
   const { title, price, description } = props
 
   const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
     if (indexOfIteam >= 0) {
-      dispatch(cartItemsActions.incrementItem(indexOfIteam))
+      dispatch(cartActions.incrementItem(indexOfIteam))
       return
     }
-    dispatch(cartItemsActions.addItem({ title, price, quantity: 1 }))
+    dispatch(cartActions.addItem({ title, price, quantity: 1 }))
   }
 
   return (

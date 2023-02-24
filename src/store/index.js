@@ -1,5 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 import uiSlice from './ui-slice'
+import cartSlice from './cart-slice'
 
 const cartItemsSlice = createSlice({
   name: 'cartItems',
@@ -24,9 +25,10 @@ const cartItemsSlice = createSlice({
 const store = configureStore({
   reducer: {
     ui: uiSlice.reducer,
-    cartItem: cartItemsSlice.reducer,
+    cart: cartSlice.reducer,
+    // cartItem: cartItemsSlice.reducer,
   },
 })
-export const cartItemsActions = cartItemsSlice.actions
+// export const cartItemsActions = cartItemsSlice.actions
 
 export default store

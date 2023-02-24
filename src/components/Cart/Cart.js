@@ -5,7 +5,7 @@ import classes from './Cart.module.css'
 import CartItem from './CartItem'
 
 const Cart = (props) => {
-  const cartItems = useSelector((state) => state.cartItem)
+  const cartItems = useSelector((state) => state.cart)
 
   return (
     <Card className={classes.cart}>

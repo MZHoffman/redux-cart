@@ -1,30 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { cartItemsActions } from '../../store'
+import { cartActions } from '../../store/cart-slice'
 
 import classes from './CartItem.module.css'
 
 const CartItem = (props) => {
   const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.cartItem)
+  const cartItems = useSelector((state) => state.cart)
 
   const { title, quantity, price } = props.item
 
   const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
     if (indexOfIteam >= 0) {
-      dispatch(cartItemsActions.incrementItem(indexOfIteam))
+      dispatch(cartActions.incrementItem(indexOfIteam))
       return
     }
-    dispatch(cartItemsActions.addItem(props.item))
+    dispatch(cartActions.addItem(props.item))
   }
   const removeHandler = () => {
     if (cartItems.items[indexOfIteam].quantity <= 1) {
-      dispatch(cartItemsActions.removeItem(indexOfIteam))
+      dispatch(cartActions.removeItem(indexOfIteam))
       return
     }
 
     if (indexOfIteam >= 0) {
-      dispatch(cartItemsActions.decrementItem(indexOfIteam))
+      dispatch(cartActions.decrementItem(indexOfIteam))
       return
     }
   }

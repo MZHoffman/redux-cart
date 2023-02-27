@@ -14,15 +14,7 @@ const CartItem = (props) => {
     dispatch(cartActions.addItem(props.item))
   }
   const removeHandler = () => {
-    if (cartItems.items[indexOfIteam].quantity <= 1) {
-      dispatch(cartActions.removeItem(indexOfIteam))
-      return
-    }
-
-    if (indexOfIteam >= 0) {
-      dispatch(cartActions.decrementItem(indexOfIteam))
-      return
-    }
+    dispatch(cartActions.removeItem(props.item))
   }
 
   return (

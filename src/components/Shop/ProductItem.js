@@ -6,16 +6,9 @@ import classes from './ProductItem.module.css'
 
 const ProductItem = (props) => {
   const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.cart)
-
   const { id, title, price, description } = props
 
-  const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
-    // if (indexOfIteam >= 0) {
-    //   dispatch(cartActions.incrementItem(indexOfIteam))
-    //   return
-    // }
     dispatch(cartActions.addItem({ id, title, price, quantity: 1 }))
   }
 

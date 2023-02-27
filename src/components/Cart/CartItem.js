@@ -11,10 +11,6 @@ const CartItem = (props) => {
 
   const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
-    // if (indexOfIteam >= 0) {
-    //   dispatch(cartActions.incrementItem(indexOfIteam))
-    //   return
-    // }
     dispatch(cartActions.addItem(props.item))
   }
   const removeHandler = () => {

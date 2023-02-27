@@ -1,11 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, Fragment } from 'react'
 
 import { uiActions } from './store/ui-slice'
 
 import Cart from './components/Cart/Cart'
 import Layout from './components/Layout/Layout'
 import Products from './components/Shop/Products'
+import Notification from './components/UI/Notification'
+
+let isInitial = true
 
 function App() {
   const dispatch = useDispatch()
@@ -37,6 +40,10 @@ function App() {
         })
       )
     }
+    if (isInitial) {
+      isInitial = false
+      return
+    }
     sendCartData().catch((error) => {
       dispatch(
         uiActions.showNotification({
@@ -49,10 +56,19 @@ function App() {
   }, [cart, dispatch])
 
   return (
-    <Layout>
-      {showCart && <Cart />}
-      <Products />
-    </Layout>
+    <Fragment>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
+      <Layout>
+        {showCart && <Cart />}
+        <Products />
+      </Layout>
+    </Fragment>
   )
 }
 

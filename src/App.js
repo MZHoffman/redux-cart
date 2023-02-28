@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, Fragment } from 'react'
 import { sendCartData } from './store/cart-actions'
+import { fetchCartData } from './store/cart-actions'
 
 import Cart from './components/Cart/Cart'
 import Layout from './components/Layout/Layout'
@@ -14,13 +15,19 @@ function App() {
   const showCart = useSelector((state) => state.ui.isVisable)
   const cart = useSelector((state) => state.cart)
   const notification = useSelector((state) => state.ui.notification)
+  useEffect(() => {
+    dispatch(fetchCartData())
+  }, [dispatch])
 
   useEffect(() => {
     if (isInitial) {
       isInitial = false
       return
     }
-    dispatch(sendCartData(cart))
+    if (cart.changed) {
+      console.log(cart, 'app.js')
+      dispatch(sendCartData(cart))
+    }
   }, [cart, dispatch])
 
   return (

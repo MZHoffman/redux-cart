@@ -9,7 +9,6 @@ const CartItem = (props) => {
 
   const { title, quantity, price } = props.item
 
-  const indexOfIteam = cartItems.items.findIndex((item) => item.title === title)
   const addHandler = () => {
     dispatch(cartActions.addItem(props.item))
   }
